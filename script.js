@@ -1,5 +1,7 @@
 // Write your JavaScript code here!
 
+const { myFetch } = require("./scriptHelper");
+
 window.addEventListener("load", function () {
     const form = document.querySelector("form");
     const button = document.getElementById("formSubmit");
@@ -23,9 +25,10 @@ window.addEventListener("load", function () {
                 fuelLevel: fuelLevel.value,
                 cargoLevel: cargoMass.value
             };
-            event.preventDefault();
             formSubmission(window.document,faultyItems,response.pilot,response.copilot,response.fuelLevel,response.cargoLevel);
+            event.preventDefault();
         }
+        // event.preventDefault();
     });
 
     let listedPlanets;
@@ -37,6 +40,7 @@ window.addEventListener("load", function () {
     }).then(function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+
     })
 
 });
