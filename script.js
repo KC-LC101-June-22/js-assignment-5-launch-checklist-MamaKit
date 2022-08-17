@@ -7,7 +7,10 @@ window.addEventListener("load", function () {
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
+    const faultyItems = document.getElementById("faultyItems");
     let response = {};
+
+    faultyItems.style.visibility = "hidden";
     
     form.addEventListener("submit", function(event) {
         if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "") {
@@ -20,8 +23,8 @@ window.addEventListener("load", function () {
                 fuelLevel: fuelLevel.value,
                 cargoLevel: cargoMass.value
             };
-            console.log(response);
             event.preventDefault();
+            formSubmission(window.document,faultyItems,response.pilot,response.copilot,response.fuelLevel,response.cargoLevel);
         }
     });
 
