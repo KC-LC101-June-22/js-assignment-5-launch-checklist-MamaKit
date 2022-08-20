@@ -1,11 +1,10 @@
 // Write your JavaScript code here!
 
-// const { myFetch } = require("./scriptHelper");
-
 window.addEventListener("load", function () {
     const form = document.querySelector("form");
     const button = document.getElementById("formSubmit");
     const list = document.getElementById("faultyItems");
+    const list2 = document.getElementById("missionTarget");
     const pilotName = document.querySelector("input[name=pilotName]");
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
@@ -32,16 +31,16 @@ window.addEventListener("load", function () {
 
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-    let listedPlanetsResponse;
-    // = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
-        // return response.json;
-    // listedPlanetsResponse.then(function (result) {
-    //     listedPlanets = result;
-    //     console.log(listedPlanets);
-    // }).then(function () {
-    //     console.log(listedPlanets);
-        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-
-    // })
+    let listedPlanetsResponse = myFetch();
+    listedPlanetsResponse.then(function (result) {
+        listedPlanets = result;
+        console.log(listedPlanets);
+    }).then(function () {
+        // console.log(listedPlanets);
+        // Below this comment call the appropriate helper functions to pick a planet from the list of planets and add that information to your destination.
+        let picked = pickPlanet(listedPlanets);
+        addDestinationInfo(window.document,list2,picked.name, picked.diameter,picked.star,picked.distance,picked.moons,picked.imageUrl);
+        list2.style.visibility = "visible";
+    })
 
 });
