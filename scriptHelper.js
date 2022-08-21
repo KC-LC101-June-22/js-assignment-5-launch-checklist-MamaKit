@@ -65,6 +65,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         faultyItems.style.visibility = "visible";
     } else {
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        faultyItems.style.visibility = "visible";
         if (validateInput(pilot) !== "Not a Number") {
             pilotStatus.innerHTML = "Invalid pilot entered";
         }
